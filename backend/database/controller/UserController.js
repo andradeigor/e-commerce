@@ -1,10 +1,10 @@
 const UserModel = require("../models/UserModel");
-const bcrypt = require("../../server/utils/bcrypt");
+const UtilsBcrypt = require("../../server/utils/bcrypt");
 
 module.exports = {
   async createUser(req, res) {
     const { name, email, password } = req.body;
-    const hashedPassword = await bcrypt.encrypt(password);
+    const hashedPassword = await UtilsBcrypt.encrypt(password);
     const user = await UserModel.create({
       name,
       email,

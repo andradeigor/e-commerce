@@ -1,9 +1,12 @@
 const express = require("express");
-const router = require("./routes/User");
+const UserRouter = require("./routes/User");
+const AddressRouter = require("./routes/Address");
 require("../database/index");
 const app = express();
+
 app.use(express.json());
-app.use("/", router);
+app.use("/users/address", AddressRouter);
+app.use("/", UserRouter);
 
 app.listen(5000, () => {
   console.log("hi, I'm up");
