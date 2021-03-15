@@ -16,7 +16,7 @@ module.exports = {
     return await UserModel.findAll();
   },
   async listUser(req, res) {
-    return (user = UserModel.findByPk(req.params.id));
+    return (user = await UserModel.findByPk(req.params.id));
   },
   async updateUser(req, res) {
     const { name, email } = req.body;

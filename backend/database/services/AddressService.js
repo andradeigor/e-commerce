@@ -1,3 +1,4 @@
+const { updateAddress } = require("../controller/AddressController");
 const AddressModel = require("../models/AddressModel");
 const UserModel = require("../models/UserModel");
 
@@ -17,16 +18,6 @@ module.exports = {
     });
     return address;
   },
-  async deleteAddress(req, res) {
-    const addressId = req.params.id;
-    const address = await AddressModel.findByPk(addressId);
-    if (address?.userId === Number(req.params.userId)) {
-      await AddressModel.destroy({ where: { id: addressId } });
-      res.json({ mensage: "deleted" });
-    } else {
-      return res.status(400).json({ error: "user not found" });
-    }
-  },
   async listAddresses(req, res) {
     return AddressModel.findAll();
   },
@@ -38,6 +29,31 @@ module.exports = {
     const address = await AddressModel.findByPk(addressId);
     if (address?.userId === Number(req.params.userId)) {
       return address;
+    } else {
+      return res.status(400).json({ error: "user not found" });
+    }
+  },
+  async updateAddress(req, res) {
+    const addressId = req.params.id;
+    const userId = Number(req.params.userId);
+    const { zipcode, street, number } = req.body;
+    const address = await AddressModel.findByPk(addressId);
+    if (address?.userId === userId) {
+      await AddressModel.update({ zipcode }, { where: { id: addressId } });
+      await AddressModel.update({ street }, { where: { id: addressId } });
+      await AddressModel.update({ number }, { where: { id: addressId } });
+      const updateAddress = await AddressModel.findByPk(addressId);
+      return updateAddress;
+    } else {
+      return res.status(400).json({ error: "user or address not found" });
+    }
+  },
+  async deleteAddress(req, res) {
+    const addressId = req.params.id;
+    const address = await AddressModel.findByPk(addressId);
+    if (address?.userId === Number(req.params.userId)) {
+      await AddressModel.destroy({ where: { id: addressId } });
+      res.json({ mensage: "deleted", address });
     } else {
       return res.status(400).json({ error: "user not found" });
     }

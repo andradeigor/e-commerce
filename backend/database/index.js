@@ -10,4 +10,5 @@ UserModel.init(connection);
 AdressModel.init(connection);
 
 AdressModel.associate(connection.models);
+
 module.exports = connection;
