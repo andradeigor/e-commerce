@@ -5,7 +5,7 @@ require("../database/index");
 const app = express();
 
 app.use(express.json());
-app.use("/users/address", AddressRouter);
+app.use("/users/", AddressRouter);
 app.use("/", UserRouter);
 
 app.listen(5000, () => {

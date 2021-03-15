@@ -3,7 +3,7 @@ const { Model, DataTypes } = require("sequelize");
 // ele é uma classe que extende o Model do sequelize e dentro do super(classe pai) init
 // você passa as colunas da tabela que criou
 // e no segundo argumento do init você passa a conexão com o banco que a gente cria no index.js da database
-class User extends Model {
+class Address extends Model {
   static init(connection) {
     super.init(
       {
@@ -16,6 +16,9 @@ class User extends Model {
       }
     );
   }
+  static associate(models) {
+    this.belongsTo(models.User, { foreignKey: "userId", as: "owner" });
+  }
 }
 
-module.exports = User;
+module.exports = Address;
