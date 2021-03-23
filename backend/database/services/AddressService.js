@@ -1,4 +1,3 @@
-const { updateAddress } = require("../controller/AddressController");
 const AddressModel = require("../models/AddressModel");
 const UserModel = require("../models/UserModel");
 
