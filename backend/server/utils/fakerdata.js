@@ -8,6 +8,11 @@ module.exports = {
       password: faker.internet.password(8),
     };
   },
+  async addressesFakeData() {
+    return {
+      zipcode: faker.address.zipCode(),
+      street: faker.address.streetName(),
+      number: faker.random.number(50),
+    };
+  },
 };
-
-

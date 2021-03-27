@@ -77,7 +77,7 @@ test("Should Update an User", async function () {
     `http://localhost:5000/users/${user.data.id}`,
     "get"
   );
-    expect(updateduser.data).toEqual(newuser.data)
+  expect(updateduser.data).toEqual(newuser.data);
   await Myrequest.request(
     `http://localhost:5000/users/${user.data.id}`,
     "delete"
