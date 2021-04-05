@@ -6,6 +6,7 @@ export const HeaderConteiner = styled.div`
   width: 100%;
   background-color: ${(props) => props.theme.colors.primary};
   padding: 8px 0px;
+  height: 90px;
   align-items: center;
   @media (max-width: ${(props) => props.theme.breakpoints.sm}) {
     height: 60px;
