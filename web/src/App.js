@@ -3,14 +3,16 @@ import GlobalStyle from "./styles/global";
 import light from "./styles/themes/light";
 import Header from "./components/Header/index";
 import Banner from "./components/Banner/index";
-import Card from "./components/Card/index";
+import CardDisplay from "./components/CardDisplay/index";
 
 const App = () => {
   return (
     <ThemeProvider theme={light}>
       <div className="App">
         <GlobalStyle />
-        <Card />
+        <Header />
+        <Banner />
+        <CardDisplay />
       </div>
     </ThemeProvider>
   );

@@ -2,16 +2,17 @@ import styled from "styled-components";
 
 export const CardContainer = styled.div`
   max-width: 200px;
-  margin: 20px;
   height: 300px;
   background-color: ${(props) => props.theme.colors.secondary};
   border-radius: 10px;
   display: flex;
   overflow: hidden;
   flex-direction: column;
-  transition: all 0.2s ease-out;
+  margin-bottom: 50px;
+  transition: all 0.3s ease-out;
   :hover {
     height: 350px;
+    margin-bottom: 0px;
   }
 `;
 export const ImageContainer = styled.div`
@@ -66,5 +67,6 @@ export const SeemoreButton = styled.button`
   font-weight: bold;
   height: 30px;
   border: none;
+  outline: none;
   cursor: pointer;
 `;
