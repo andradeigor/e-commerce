@@ -6,8 +6,13 @@ export default {
     secondary: "#FAFAFA",
     banner: "#5E81AC",
 
-    background: "#ECEFF4",
+    background: "#E9EAE9",
     text: "#333",
+    card: {
+      title: "#ACA7A7",
+      price: "#171923",
+      subtitle: "#ACA7A7",
+    },
   },
   breakpoints: {
     sm: "600px",
