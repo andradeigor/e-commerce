@@ -10,18 +10,17 @@ import {
   SeemoreButtonContainer,
   SeemoreButton,
 } from "./style";
-import ProductPath from "../../assets/Products/generic1.png";
-const Card = () => {
+const Card = ({ product }) => {
   return (
     <CardContainer>
       <ImageContainer>
-        <CardImage src={ProductPath} />
+        <CardImage src={product.imagePath} />
       </ImageContainer>
       <CardDivider />
       <CardTextContainer>
-        <CardTitleText>Gray T-Shirt</CardTitleText>
-        <CardPriceText>R$:80,00</CardPriceText>
-        <CardSubtitleText>Ou em até 12x sem juros</CardSubtitleText>
+        <CardTitleText>{product.title}</CardTitleText>
+        <CardPriceText>R$:{product.price}</CardPriceText>
+        <CardSubtitleText>{product.subtitle}</CardSubtitleText>
         <SeemoreButtonContainer>
           <SeemoreButton>Ver Opções</SeemoreButton>
         </SeemoreButtonContainer>
