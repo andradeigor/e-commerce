@@ -30,7 +30,7 @@ export const CardImage = styled.img`
 export const CardDivider = styled.div`
   width: 100%;
   height: 1px;
-  background-color: #e9eae9;
+  background-color: ${(props) => props.theme.colors.background};
 `;
 export const CardTextContainer = styled.div`
   margin-top: 5px;
@@ -62,7 +62,7 @@ export const SeemoreButton = styled.button`
   margin-left: 40px;
   border-radius: 10px;
   background-color: ${(props) => props.theme.colors.primary};
-  color: ${(props) => props.theme.colors.secondary};
+  color: ${(props) => props.theme.colors.card.button};
   font-family: "Poppins", sans-serif;
   font-weight: bold;
   height: 30px;

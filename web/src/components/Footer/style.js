@@ -15,7 +15,7 @@ export const FooterContainer = styled.div`
 
 export const FooterText = styled.h1`
   font-size: 24px;
-  color: ${(props) => props.theme.colors.secondary};
+  color: #fafafa;
   @media (max-width: ${(props) => props.theme.breakpoints.md}) {
     font-size: 16px;
   }

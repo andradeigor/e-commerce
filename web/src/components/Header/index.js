@@ -7,13 +7,14 @@ import {
   SearchBar,
   WelcomeText,
   ProfileLogo,
+  ThemeSwither,
   CarLogo,
 } from "./style.js";
 import logoPath from "../../assets/logo.svg";
 import logoTextPath from "../../assets/logotext.svg";
 import logoCarPath from "../../assets/logocar.svg";
 import logoUserPath from "../../assets/logouser.svg";
-const Header = () => {
+const Header = (props) => {
   return (
     <header>
       <HeaderConteiner>
@@ -25,8 +26,10 @@ const Header = () => {
           <SearchBar placeholder="Seach..." />
         </SearchBarConteiner>
         <Container>
-          <WelcomeText>Bem-vindo, Igor</WelcomeText>
           <ProfileLogo src={logoUserPath} />
+        </Container>
+        <Container>
+          <ThemeSwither onClick={props.tougleTheme} />
         </Container>
         <Container>
           <CarLogo src={logoCarPath} />

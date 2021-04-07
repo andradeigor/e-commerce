@@ -38,20 +38,21 @@ export const LogoText = styled.img`
   }
 `;
 export const ProfileLogo = styled.img`
-  display: none;
-  @media (max-width: ${(props) => props.theme.breakpoints.sm}) {
-    display: inline;
-    width: 32px;
-  }
+  width: 32px;
 `;
-
+export const ThemeSwither = styled.button`
+  width: 10px;
+  height: 10px;
+`;
 export const SearchBar = styled.input`
   width: 100%;
   height: 40px;
   border-radius: 15px;
   background-color: ${(props) => props.theme.colors.background};
+  color: ${(props) => props.theme.colors.searchtext};
+  font-family: "Poppins", sans-serif;
   font-size: 20px;
-  padding-left: 5px;
+  padding-left: 10px;
   &:focus {
     outline: none;
   }
@@ -64,7 +65,7 @@ export const SearchBar = styled.input`
 `;
 
 export const WelcomeText = styled.p`
-  color: ${(props) => props.theme.colors.secondary};
+  color: #fafafa;
   font-size: 20px;
   padding: 0px 20px;
   @media (max-width: ${(props) => props.theme.breakpoints.sm}) {

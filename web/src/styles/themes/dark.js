@@ -3,16 +3,16 @@ export default {
 
   colors: {
     primary: "#171923",
-    secondary: "#FAFAFA",
-    banner: "#5E81AC",
-    seachtext: "#171923",
+    secondary: "#4C566A",
+    banner: "#2E3440",
+    searchtext: "#FAFAFA",
 
-    background: "#E9EAE9",
+    background: "#2E3440",
     text: "#333",
     card: {
-      title: "#ACA7A7",
+      title: "#FAFAFA",
       price: "#171923",
-      subtitle: "#ACA7A7",
+      subtitle: "#E9EAE9",
       button: "#FAFAFA",
     },
   },
