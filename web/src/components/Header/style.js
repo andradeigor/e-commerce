@@ -40,9 +40,16 @@ export const LogoText = styled.img`
 export const ProfileLogo = styled.img`
   width: 32px;
 `;
-export const ThemeSwither = styled.button`
-  width: 10px;
-  height: 10px;
+export const ThemeContainer = styled.div`
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+`;
+export const ThemeSwither = styled.img`
+  width: 20px;
 `;
 export const SearchBar = styled.input`
   width: 100%;

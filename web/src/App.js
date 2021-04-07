@@ -20,7 +20,7 @@ const App = () => {
       <div className="App">
         <GlobalStyle />
         <header>
-          <Header tougleTheme={() => tougleTheme()} />
+          <Header tougleTheme={() => tougleTheme()} theme={preferenceTheme} />
         </header>
         <main>
           <Banner />
