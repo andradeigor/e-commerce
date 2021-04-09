@@ -9,6 +9,7 @@ export const CardContainer = styled.div`
   overflow: hidden;
   flex-direction: column;
   margin-bottom: 50px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35);
   transition: all 0.3s ease-out;
   :hover {
     height: 350px;
@@ -22,10 +23,6 @@ export const ImageContainer = styled.div`
 `;
 export const CardImage = styled.img`
   width: 100%;
-  transition: all 0.3s ease-out;
-  :hover {
-    transform: scale(1.2);
-  }
 `;
 export const CardDivider = styled.div`
   width: 100%;

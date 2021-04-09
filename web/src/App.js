@@ -1,6 +1,6 @@
 import { React, useState } from "react";
 import { ThemeProvider } from "styled-components";
-
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import GlobalStyle from "./styles/global";
 import light from "./styles/themes/light";
 import dark from "./styles/themes/dark";
@@ -8,6 +8,7 @@ import Header from "./components/Header/index";
 import Banner from "./components/Banner/index";
 import CardDisplay from "./components/CardDisplay/index";
 import Footer from "./components/Footer/index";
+import ProductDisplay from "./components/ProductDisplay";
 const App = () => {
   const [preferenceTheme, SetPreferenceTheme] = useState("light");
   const tougleTheme = () => {
@@ -23,8 +24,15 @@ const App = () => {
           <Header tougleTheme={() => tougleTheme()} theme={preferenceTheme} />
         </header>
         <main>
-          <Banner />
-          <CardDisplay />
+          <Router>
+            <Route path="/" exact>
+              <Banner />
+              <CardDisplay />
+            </Route>
+            <Route path="/item">
+              <ProductDisplay />
+            </Route>
+          </Router>
         </main>
         <footer>
           <Footer />

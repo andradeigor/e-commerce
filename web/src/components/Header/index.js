@@ -5,7 +5,6 @@ import {
   Logo,
   LogoText,
   SearchBar,
-  WelcomeText,
   ProfileLogo,
   ThemeSwither,
   ThemeContainer,

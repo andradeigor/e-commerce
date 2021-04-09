@@ -6,6 +6,8 @@ export const FooterContainer = styled.div`
   height: 90px;
   background-color: ${(props) => props.theme.colors.primary};
   display: flex;
+  position: fixed;
+  bottom: 0;
   align-items: center;
   justify-content: center;
   @media (max-width: ${(props) => props.theme.breakpoints.sm}) {
