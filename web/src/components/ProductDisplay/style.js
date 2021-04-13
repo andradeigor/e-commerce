@@ -53,6 +53,10 @@ export const ProductDescriptionArea = styled.div`
 `;
 
 export const ProductDescriptionTextContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   width: 80%;
   margin: auto;
   margin-top: 10%;
@@ -68,7 +72,6 @@ export const ProductSizeArea = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  height: 80%;
   align-items: center;
 `;
 export const ProductSizeContainer = styled.div`
@@ -96,4 +99,21 @@ export const ProductSizeItem = styled.div`
   justify-content: center;
   font-size: 24px;
   font-weight: bold;
+`;
+export const ProductPriceArea = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+`;
+export const ProductPriceContainer = styled.div`
+  display: flex;
+  align-items: center;
+  width: 80%;
+`;
+export const ProductPriceItem = styled.h1`
+  font-size: 24px;
+  margin-left: 48px;
+  color: ${(props) => props.theme.colors.primary};
 `;
