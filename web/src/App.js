@@ -9,15 +9,16 @@ import Banner from "./components/Banner/index";
 import CardDisplay from "./components/CardDisplay/index";
 import Footer from "./components/Footer/index";
 import ProductDisplay from "./components/ProductDisplay";
+import MyUseState from "./utils/MyUseState";
 const App = () => {
-  const [preferenceTheme, SetPreferenceTheme] = useState("light");
+  const [preferenceTheme, SetPreferenceTheme] = MyUseState("theme", light);
   const tougleTheme = () => {
-    preferenceTheme === "light"
-      ? SetPreferenceTheme("dark")
-      : SetPreferenceTheme("light");
+    preferenceTheme === light
+      ? SetPreferenceTheme(dark)
+      : SetPreferenceTheme(light);
   };
   return (
-    <ThemeProvider theme={preferenceTheme === "light" ? light : dark}>
+    <ThemeProvider theme={preferenceTheme}>
       <div className="App">
         <GlobalStyle />
         <header>
