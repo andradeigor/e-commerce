@@ -24,6 +24,17 @@ export const ProductImageArea = styled.div`
   align-items: center;
   justify-content: center;
 `;
+export const ProductContainerDivider = styled.div`
+  display: flex;
+  align-items: center;
+  height: 100%;
+`;
+
+export const ProductDivider = styled.div`
+  height: 80%;
+  background-color: ${(props) => props.theme.colors.background};
+  width: 2px;
+`;
 export const ProducImageContainer = styled.div`
   width: 80%;
   margin: 10%;
@@ -51,4 +62,38 @@ export const ProductDescriptionTitle = styled.h1`
   text-align: center;
   font-size: 24px;
   color: ${(props) => props.theme.colors.card.title};
+`;
+
+export const ProductSizeArea = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 80%;
+  align-items: center;
+`;
+export const ProductSizeContainer = styled.div`
+  width: 80%;
+  height: 80px;
+  margin-top: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const ProductSizeItem = styled.div`
+  width: 60px;
+  height: 60px;
+  margin: 8px;
+  cursor: pointer;
+  border-radius: 15px;
+  display: flex;
+  border: solid 2px ${(props) => props.theme.colors.primary};
+  background-color: ${(props) =>
+    props.selected ? props.theme.colors.primary : "none"};
+  color: ${(props) =>
+    props.selected ? props.theme.colors.secondary : props.theme.colors.primary};
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bold;
 `;

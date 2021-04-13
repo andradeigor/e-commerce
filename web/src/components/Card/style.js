@@ -8,7 +8,7 @@ export const CardContainer = styled.div`
   display: flex;
   overflow: hidden;
   flex-direction: column;
-  margin-bottom: 50px;
+  margin-bottom: 60px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35);
   transition: all 0.3s ease-out;
   :hover {

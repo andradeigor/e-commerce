@@ -32,7 +32,6 @@ const Header = (props) => {
         </Container>
         <ThemeContainer onClick={props.tougleTheme}>
           <ThemeSwither src={props.theme === "light" ? sunPath : moonPath} />
-          {console.log(props.theme)}
         </ThemeContainer>
         <Container>
           <CarLogo src={logoCarPath} />
