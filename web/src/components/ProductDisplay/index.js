@@ -16,6 +16,8 @@ import {
   ProductPriceArea,
   ProductPriceContainer,
   ProductPriceItem,
+  ProductButtonArea,
+  ProductButton,
 } from "./style";
 
 const ProductDisplay = () => {
@@ -72,12 +74,15 @@ const ProductDisplay = () => {
                 GG
               </ProductSizeItem>
             </ProductSizeContainer>
+            <ProductPriceArea>
+              <ProductPriceContainer>
+                <ProductPriceItem>R$:80,00</ProductPriceItem>
+              </ProductPriceContainer>
+            </ProductPriceArea>
+            <ProductButtonArea>
+              <ProductButton>Comprar</ProductButton>
+            </ProductButtonArea>
           </ProductSizeArea>
-          <ProductPriceArea>
-            <ProductPriceContainer>
-              <ProductPriceItem>R$:80,00</ProductPriceItem>
-            </ProductPriceContainer>
-          </ProductPriceArea>
         </ProductDescriptionArea>
       </Product>
     </ProductContainer>
