@@ -10,6 +10,7 @@ import {
   SeemoreButtonContainer,
   SeemoreButton,
 } from "./style";
+import { Link } from "react-router-dom";
 const Card = ({ product }) => {
   return (
     <CardContainer>
@@ -22,7 +23,9 @@ const Card = ({ product }) => {
         <CardPriceText>R$:{product.price}</CardPriceText>
         <CardSubtitleText>{product.subtitle}</CardSubtitleText>
         <SeemoreButtonContainer>
-          <SeemoreButton>Ver Opções</SeemoreButton>
+          <Link to={`/item/${product.id}`}>
+            <SeemoreButton>Ver Opções</SeemoreButton>
+          </Link>
         </SeemoreButtonContainer>
       </CardTextContainer>
     </CardContainer>

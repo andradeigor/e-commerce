@@ -4,6 +4,7 @@ export const CardDisplayContainer = styled.div`
   margin-top: 2%;
   display: grid;
   justify-items: center;
+  margin-bottom: 100px;
   @media (min-width: ${(props) => props.theme.breakpoints.sm}) {
     grid-template-columns: repeat(3, 1fr);
   }

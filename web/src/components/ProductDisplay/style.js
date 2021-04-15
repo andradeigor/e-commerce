@@ -7,6 +7,9 @@ export const ProductContainer = styled.div`
   align-items: center;
   justify-content: center;
   background-color: ${(props) => props.theme.colors.background};
+  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
+    height: 1000px;
+  }
 `;
 
 export const Product = styled.div`
@@ -16,6 +19,15 @@ export const Product = styled.div`
   background-color: ${(props) => props.theme.colors.secondary};
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35);
   border-radius: 15px;
+  @media (max-width: ${(props) => props.theme.breakpoints.lg}) {
+    width: 100%;
+    height: 100%;
+  }
+  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 `;
 
 export const ProductImageArea = styled.div`
@@ -23,11 +35,18 @@ export const ProductImageArea = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
+    width: 500px;
+  }
 `;
 export const ProductContainerDivider = styled.div`
   display: flex;
   align-items: center;
   height: 100%;
+  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
+    display: none;
+    height: 0px;
+  }
 `;
 
 export const ProductDivider = styled.div`
@@ -39,6 +58,11 @@ export const ProducImageContainer = styled.div`
   width: 80%;
   margin: 10%;
   overflow: hidden;
+  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
+    margin: 0px;
+    margin-top: 10%;
+    width: 400px;
+  }
 `;
 export const ProductImage = styled.img`
   width: inherit;
@@ -53,6 +77,10 @@ export const ProductDescriptionArea = styled.div`
   align-items: center;
   width: 50%;
   height: 100%;
+  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
+    width: 100%;
+    justify-content: center;
+  }
 `;
 
 export const ProductDescriptionTextContainer = styled.div`
@@ -60,10 +88,17 @@ export const ProductDescriptionTextContainer = styled.div`
   width: 80%;
   margin-top: 10%;
   height: 50px;
+  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
+    margin-top: 0px;
+  }
 `;
 export const ProductDescriptionTitle = styled.h1`
   font-size: 32px;
   color: ${(props) => props.theme.colors.card.title};
+  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
+    font-size: 28px;
+    text-align: center;
+  }
 `;
 
 export const ProductSizeArea = styled.div`
@@ -78,6 +113,9 @@ export const ProductSizeContainer = styled.div`
   margin-top: 30px;
   display: flex;
   align-items: center;
+  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
+    justify-content: center;
+  }
 `;
 
 export const ProductSizeItem = styled.div`
@@ -116,6 +154,10 @@ export const ProductPriceContainer = styled.div`
 export const ProductPriceItem = styled.h1`
   font-size: 24px;
   color: ${(props) => props.theme.colors.primary};
+  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
+    width: 100%;
+    text-align: center;
+  }
 `;
 
 export const ProductButtonArea = styled.div`
@@ -132,10 +174,6 @@ export const ProductButton = styled.button`
   border-radius: 15px;
   border: none;
   background-color: ${(props) => props.theme.colors.primary};
-  font-size: 24px;
-  color: ${(props) => props.theme.colors.secondary};
-  font-family: "Poppins", sans-serif;
-  font-weight: bold;
   outline: none;
   cursor: pointer;
   :hover {
@@ -145,5 +183,19 @@ export const ProductButton = styled.button`
   :active {
     position: relative;
     transform: translateY(-1px);
+  }
+  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
+    margin-top: 30px;
+  }
+`;
+export const ProductButtonText = styled.span`
+  width: 100%;
+  height: 100;
+  font-size: 24px;
+  color: ${(props) => props.theme.colors.secondary};
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  @media (max-width: ${(props) => props.theme.breakpoints.lg}) {
+    font-size: 18px;
   }
 `;

@@ -10,6 +10,7 @@ import {
   ThemeContainer,
   CarLogo,
 } from "./style.js";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 import logoPath from "../../assets/logo.svg";
 import logoTextPath from "../../assets/logotext.svg";
 import logoCarPath from "../../assets/logocar.svg";

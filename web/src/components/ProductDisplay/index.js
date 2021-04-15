@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 import {
   ProductContainer,
   Product,
@@ -18,20 +19,29 @@ import {
   ProductPriceItem,
   ProductButtonArea,
   ProductButton,
+  ProductButtonText,
 } from "./style";
+import { useParams } from "react-router-dom";
 
 const ProductDisplay = () => {
   const [selected, SetSelected] = useState("");
+  const [data, SetData] = useState({});
+  const { id } = useParams();
   const HaddleClickSize = (ev) => {
     const target = ev.target.innerHTML;
     SetSelected(target);
   };
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5000/admin/products/${id}`)
+      .then((res) => SetData(res.data));
+  }, []);
   return (
     <ProductContainer>
       <Product>
         <ProductImageArea>
           <ProducImageContainer>
-            <ProductImage src="https://user-images.githubusercontent.com/21049910/113764970-0ed4a100-96f2-11eb-97ab-c4fab2bfb84d.png" />
+            <ProductImage src={data.imagePath} />
           </ProducImageContainer>
         </ProductImageArea>
         <ProductContainerDivider>
@@ -39,7 +49,7 @@ const ProductDisplay = () => {
         </ProductContainerDivider>
         <ProductDescriptionArea>
           <ProductDescriptionTextContainer>
-            <ProductDescriptionTitle>Gray T-Shirt</ProductDescriptionTitle>
+            <ProductDescriptionTitle>{data.title}</ProductDescriptionTitle>
           </ProductDescriptionTextContainer>
           <ProductSizeArea>
             <ProductSizeContainer>
@@ -76,11 +86,13 @@ const ProductDisplay = () => {
             </ProductSizeContainer>
             <ProductPriceArea>
               <ProductPriceContainer>
-                <ProductPriceItem>R$:80,00</ProductPriceItem>
+                <ProductPriceItem>R$:{data.price}</ProductPriceItem>
               </ProductPriceContainer>
             </ProductPriceArea>
             <ProductButtonArea>
-              <ProductButton>Comprar</ProductButton>
+              <ProductButton>
+                <ProductButtonText>Adicionar ao Carrinho</ProductButtonText>
+              </ProductButton>
             </ProductButtonArea>
           </ProductSizeArea>
         </ProductDescriptionArea>

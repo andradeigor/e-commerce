@@ -1,6 +1,6 @@
 import { React, useState } from "react";
 import { ThemeProvider } from "styled-components";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import GlobalStyle from "./styles/global";
 import light from "./styles/themes/light";
 import dark from "./styles/themes/dark";
@@ -30,9 +30,7 @@ const App = () => {
               <Banner />
               <CardDisplay />
             </Route>
-            <Route path="/item">
-              <ProductDisplay />
-            </Route>
+            <Route path="/item/:id" children={<ProductDisplay />}></Route>
           </Router>
         </main>
         <footer>
