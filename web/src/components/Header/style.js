@@ -8,6 +8,9 @@ export const HeaderConteiner = styled.div`
   padding: 8px 0px;
   height: 90px;
   align-items: center;
+  @media (max-width: ${(props) => props.theme.breakpoints.lg}) {
+    height: 70px;
+  }
   @media (max-width: ${(props) => props.theme.breakpoints.sm}) {
     height: 60px;
   }
@@ -27,7 +30,7 @@ export const SearchBarConteiner = styled.div`
 `;
 
 export const Logo = styled.img`
-  @media (max-width: ${(props) => props.theme.breakpoints.sm}) {
+  @media (max-width: ${(props) => props.theme.breakpoints.lg}) {
     width: 40px;
   }
 `;
