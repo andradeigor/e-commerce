@@ -22,8 +22,12 @@ const Header = (props) => {
     <header>
       <HeaderConteiner>
         <Container>
-          <Logo src={logoPath} />
-          <LogoText src={logoTextPath} />
+          <Link to="/">
+            <Logo src={logoPath} />
+          </Link>
+          <Link to="/">
+            <LogoText src={logoTextPath} />
+          </Link>
         </Container>
         <SearchBarConteiner>
           <SearchBar placeholder="Seach..." />

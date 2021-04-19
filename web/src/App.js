@@ -21,21 +21,21 @@ const App = () => {
     <ThemeProvider theme={preferenceTheme}>
       <div className="App">
         <GlobalStyle />
-        <header>
-          <Header tougleTheme={() => tougleTheme()} theme={preferenceTheme} />
-        </header>
-        <main>
-          <Router>
+        <Router>
+          <header>
+            <Header tougleTheme={() => tougleTheme()} theme={preferenceTheme} />
+          </header>
+          <main>
             <Route path="/" exact>
               <Banner />
               <CardDisplay />
             </Route>
             <Route path="/item/:id" children={<ProductDisplay />}></Route>
-          </Router>
-        </main>
-        <footer>
-          <Footer />
-        </footer>
+          </main>
+          <footer>
+            <Footer />
+          </footer>
+        </Router>
       </div>
     </ThemeProvider>
   );
