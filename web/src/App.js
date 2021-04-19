@@ -10,6 +10,7 @@ import CardDisplay from "./components/CardDisplay/index";
 import Footer from "./components/Footer/index";
 import ProductDisplay from "./components/ProductDisplay";
 import MyUseState from "./utils/MyUseState";
+import Login from "./components/Login/index";
 const App = () => {
   const [preferenceTheme, SetPreferenceTheme] = MyUseState("theme", light);
   const tougleTheme = () => {
@@ -31,6 +32,9 @@ const App = () => {
               <CardDisplay />
             </Route>
             <Route path="/item/:id" children={<ProductDisplay />}></Route>
+            <Route path="/login">
+              <Login />
+            </Route>
           </main>
           <footer>
             <Footer />

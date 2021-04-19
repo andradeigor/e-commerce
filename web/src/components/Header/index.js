@@ -33,7 +33,9 @@ const Header = (props) => {
           <SearchBar placeholder="Seach..." />
         </SearchBarConteiner>
         <Container>
-          <ProfileLogo src={logoUserPath} />
+          <Link to="/login">
+            <ProfileLogo src={logoUserPath} />
+          </Link>
         </Container>
         <ThemeContainer onClick={props.tougleTheme}>
           <ThemeSwither
