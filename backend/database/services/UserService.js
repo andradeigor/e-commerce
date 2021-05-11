@@ -30,10 +30,7 @@ module.exports = {
     return UserModel.destroy({ where: { id: req.params.id } });
   },
   async loginUser(req, res) {
-    const [, encriptData] = req.headers.authorization.split(" ");
-    const [email, password] = Buffer.from(encriptData, "base64")
-      .toString()
-      .split(":");
+    const { email, password } = req.body;
     const user = await UserModel.findOne({ where: { email } });
     if (!user) {
       res.send(400, "Invalid Email or Password");
