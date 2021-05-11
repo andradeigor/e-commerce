@@ -25,4 +25,8 @@ module.exports = {
     await UserService.deleteUser(req, res);
     return res.json({ menssage: `User id: ${req.params.id} deleted` });
   },
+  async loginUser(req, res) {
+    const token = await UserService.loginUser(req, res);
+    return res.json(token);
+  },
 };
