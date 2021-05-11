@@ -1,5 +1,7 @@
 const UserModel = require("../models/UserModel");
 const UtilsBcrypt = require("../../server/utils/bcrypt");
+const jwt = require("jsonwebtoken");
+require("dotenv").config();
 
 module.exports = {
   async createUser(req, res) {
@@ -36,6 +38,12 @@ module.exports = {
     if (!user) {
       res.send(400, "Invalid Email or Password");
     }
-    return { email, password };
+    const login = await UtilsBcrypt.decript(password, user.password);
+    if (login) {
+      const token = jwt.sign(user.id, process.env.SECRET);
+      return { token };
+    } else {
+      res.send(400, "Invalid Email or Password");
+    }
   },
 };
