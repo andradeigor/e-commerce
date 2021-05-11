@@ -9,8 +9,8 @@ const app = express();
 
 app.use(express.json());
 app.use(cors());
-app.use("/", UserRouter);
-app.use("/users/", AddressRouter);
+app.use("/users/", UserRouter);
+app.use("/address/", AddressRouter);
 app.use("/admin/products/", ProductsRouter);
 app.use("/auth", AuthRouter);
 

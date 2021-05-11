@@ -1,7 +1,6 @@
 const UserModel = require("../models/UserModel");
 const UtilsBcrypt = require("../../server/utils/bcrypt");
-const jwt = require("jsonwebtoken");
-require("dotenv").config();
+const UtilsJwt = require("../../server/utils/jwt");
 
 module.exports = {
   async createUser(req, res) {
@@ -37,7 +36,7 @@ module.exports = {
     }
     const login = await UtilsBcrypt.decript(password, user.password);
     if (login) {
-      const token = jwt.sign(user.id, process.env.SECRET);
+      const token = await UtilsJwt.encrypt(user.id);
       return { token };
     } else {
       res.send(400, "Invalid Email or Password");
@@ -46,7 +45,7 @@ module.exports = {
   async meUser(req, res) {
     const [, token] = req.headers.authorization.split(" ");
     try {
-      const id = await jwt.verify(token, process.env.SECRET);
+      const id = await UtilsJwt.decript(token);
       const user = await UserModel.findByPk(id);
       user.password = undefined;
       return { user };
