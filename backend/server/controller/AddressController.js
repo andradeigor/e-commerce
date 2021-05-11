@@ -1,4 +1,4 @@
-const AddressService = require("../services/AddressService");
+const AddressService = require("../../database/services/AddressService");
 
 module.exports = {
   async createAddress(req, res) {
