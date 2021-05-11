@@ -29,4 +29,8 @@ module.exports = {
     const token = await UserService.loginUser(req, res);
     return res.json(token);
   },
+  async meUser(req, res) {
+    const user = await UserService.meUser(req, res);
+    return res.json(user);
+  },
 };

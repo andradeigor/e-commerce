@@ -46,4 +46,7 @@ module.exports = {
       res.send(400, "Invalid Email or Password");
     }
   },
+  async meUser(req, res) {
+    return { hello: req.headers.authorization };
+  },
 };
