@@ -1,10 +1,9 @@
 const AddressModel = require("../models/AddressModel");
 const UserModel = require("../models/UserModel");
-const UtilsJwt = require("../../server/utils/jwt");
+
 module.exports = {
   async createAddress(req, res) {
-    const [, token] = req.headers.authorization.split(" ");
-    const userId = await UtilsJwt.decript(token);
+    const userId = res.locals.user;
     const { zipcode, street, number } = req.body;
     const user = await UserModel.findByPk(userId);
     if (!user) {
@@ -22,13 +21,11 @@ module.exports = {
     return AddressModel.findAll();
   },
   async listAddressesFromUser(req, res) {
-    const [, token] = req.headers.authorization.split(" ");
-    const userId = await UtilsJwt.decript(token);
+    const userId = res.locals.user;
     return AddressModel.findAll({ where: { userId: userId } });
   },
   async listAddressFromUser(req, res) {
-    const [, token] = req.headers.authorization.split(" ");
-    const userId = await UtilsJwt.decript(token);
+    const userId = res.locals.user;
     const addressId = req.params.id;
     const address = await AddressModel.findByPk(addressId);
     if (address?.userId === Number(userId)) {
@@ -38,8 +35,7 @@ module.exports = {
     }
   },
   async updateAddress(req, res) {
-    const [, token] = await req.headers.authorization.split(" ");
-    const userId = await UtilsJwt.decript(token);
+    const userId = res.locals.user;
     const addressId = req.params.id;
     const { zipcode, street, number } = req.body;
     const address = await AddressModel.findByPk(addressId);
@@ -54,8 +50,7 @@ module.exports = {
     }
   },
   async deleteAddress(req, res) {
-    const [, token] = req.headers.authorization.split(" ");
-    const userId = await UtilsJwt.decript(token);
+    const userId = res.locals.user;
     const addressId = req.params.id;
     const address = await AddressModel.findByPk(addressId);
     if (address?.userId === Number(userId)) {
