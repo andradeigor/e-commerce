@@ -5,7 +5,6 @@ module.exports = {
     const [, token] = req.headers.authorization.split(" ");
     const userId = await UtilsJwt.decript(token);
     if (userId) {
-      console.log("passei aqui");
       res.locals.user = userId;
       next();
     } else {
