@@ -10,7 +10,7 @@ module.exports = {
         next();
       }
     } catch (error) {
-      res.json(400, { error: "Bad Token" });
+      res.json(400, { error: error.message });
     }
   },
 };
