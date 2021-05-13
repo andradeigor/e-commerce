@@ -57,7 +57,7 @@ module.exports = {
       await AddressModel.destroy({ where: { id: addressId } });
       res.json({ mensage: "deleted", address });
     } else {
-      return res.status(400).json({ error: "user not found" });
+      return res.status(400).json({ error: "user or address not found" });
     }
   },
 };

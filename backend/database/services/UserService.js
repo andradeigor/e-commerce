@@ -5,25 +5,36 @@ const UtilsJwt = require("../../server/utils/jwt");
 module.exports = {
   async createUser(req, res) {
     const { name, email, password } = req.body;
-    const hashedPassword = await UtilsBcrypt.encrypt(password);
-    const user = await UserModel.create({
-      name,
-      email,
-      password: hashedPassword,
-    });
-    return user;
+    const replicated = await UserModel.findOne({ where: { email } });
+    if (!replicated) {
+      const hashedPassword = await UtilsBcrypt.encrypt(password);
+
+      const user = await UserModel.create({
+        name,
+        email,
+        password: hashedPassword,
+      });
+      user.password = undefined;
+      return user;
+    } else {
+      res.json(400, { error: "user alredy exist" });
+    }
   },
   async listUsers(req, res) {
-    return await UserModel.findAll();
+    return await UserModel.findAll({ attributes: { exclude: ["password"] } });
   },
   async listUser(req, res) {
-    return (user = await UserModel.findByPk(req.params.id));
+    const user = await UserModel.findByPk(req.params.id);
+    user.password = undefined;
+    return user;
   },
   async updateUser(req, res) {
     const { name, email } = req.body;
     await UserModel.update({ name }, { where: { id: req.params.id } });
     await UserModel.update({ email }, { where: { id: req.params.id } });
-    return UserModel.findByPk(req.params.id);
+    const user = await UserModel.findByPk(req.params.id);
+    user.password = undefined;
+    return user;
   },
   async deleteUser(req, res) {
     return UserModel.destroy({ where: { id: req.params.id } });

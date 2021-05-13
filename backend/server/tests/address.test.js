@@ -11,14 +11,21 @@ test("Should create a address", async function () {
   expect(user.data).toEqual(usercreated.data);
   const addressData = await addressesFakeData();
 
+  const LoginSession = await request("http://localhost:5000/auth/", "post", {
+    email: userData.email,
+    password: userData.password,
+  });
   const address = await request(
-    `http://localhost:5000/users/${user.data.id}/address`,
+    `http://localhost:5000/address`,
     "post",
-    addressData
+    addressData,
+    LoginSession.data.token
   );
   const addresscreated = await request(
-    `http://localhost:5000/users/${user.data.id}/address/${address.data.id}`,
-    "get"
+    `http://localhost:5000/address/${address.data.id}`,
+    "get",
+    "",
+    LoginSession.data.token
   );
   expect(address.data).toEqual(addresscreated.data);
   await request(`http://localhost:5000/users/${user.data.id}`, "delete");
@@ -29,31 +36,40 @@ test("Should create get the addresses", async function () {
   const addressData1 = await addressesFakeData();
   const addressData2 = await addressesFakeData();
   const addressData3 = await addressesFakeData();
-
+  const LoginSession = await request("http://localhost:5000/auth/", "post", {
+    email: userData.email,
+    password: userData.password,
+  });
   const address1 = await request(
-    `http://localhost:5000/users/${user.data.id}/address`,
+    `http://localhost:5000/address`,
     "post",
-    addressData1
+    addressData1,
+    LoginSession.data.token
   );
   const address2 = await request(
-    `http://localhost:5000/users/${user.data.id}/address`,
+    `http://localhost:5000/address`,
     "post",
-    addressData2
+    addressData2,
+    LoginSession.data.token
   );
   const address3 = await request(
-    `http://localhost:5000/users/${user.data.id}/address`,
+    `http://localhost:5000/address`,
     "post",
-    addressData3
+    addressData3,
+    LoginSession.data.token
   );
   const addresses = await request(
-    `http://localhost:5000/users/${user.data.id}/address/`
+    `http://localhost:5000/address/`,
+    "get",
+    "",
+    LoginSession.data.token
   );
   expect(address1.data).toEqual(addresses.data[0]);
   expect(address2.data).toEqual(addresses.data[1]);
   expect(address3.data).toEqual(addresses.data[2]);
   await request(`http://localhost:5000/users/${user.data.id}`, "delete");
 });
-test("Should update a address", async function () {
+test.only("Should update a address", async function () {
   const userData = await registerFakeData();
   const user = await request("http://localhost:5000/users/", "post", userData);
   const addressData = await addressesFakeData();

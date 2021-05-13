@@ -2,6 +2,7 @@ const UserService = require("../../database/services/UserService");
 
 module.exports = {
   async createUser(req, res) {
+    console.log("alo");
     const user = await UserService.createUser(req, res);
     return res.json(user);
   },
