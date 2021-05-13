@@ -43,14 +43,9 @@ module.exports = {
     }
   },
   async meUser(req, res) {
-    const [, token] = req.headers.authorization.split(" ");
-    try {
-      const id = await UtilsJwt.decript(token);
-      const user = await UserModel.findByPk(id);
-      user.password = undefined;
-      return { user };
-    } catch (error) {
-      res.send(401);
-    }
+    const userId = res.locals.user;
+    const user = await UserModel.findByPk(userId);
+    user.password = undefined;
+    return { user };
   },
 };
