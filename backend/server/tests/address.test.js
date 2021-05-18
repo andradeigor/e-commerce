@@ -69,26 +69,33 @@ test("Should create get the addresses", async function () {
   expect(address3.data).toEqual(addresses.data[2]);
   await request(`http://localhost:5000/users/${user.data.id}`, "delete");
 });
-test.only("Should update a address", async function () {
+test("Should update a address", async function () {
   const userData = await registerFakeData();
   const user = await request("http://localhost:5000/users/", "post", userData);
   const addressData = await addressesFakeData();
+  const LoginSession = await request("http://localhost:5000/auth/", "post", {
+    email: userData.email,
+    password: userData.password,
+  });
 
   const address = await request(
-    `http://localhost:5000/users/${user.data.id}/address`,
+    `http://localhost:5000/address/`,
     "post",
-    addressData
+    addressData,
+    LoginSession.data.token
   );
-  await console.log(address.data);
   const newAddressData = await addressesFakeData();
   const newAddress = await request(
-    `http://localhost:5000/users/${user.data.id}/address/${address.data.id}`,
+    `http://localhost:5000/address/${address.data.id}`,
     "put",
-    newAddressData
+    newAddressData,
+    LoginSession.data.token
   );
   const addresscreated = await request(
-    `http://localhost:5000/users/${user.data.id}/address/${newAddress.data.id}`,
-    "get"
+    `http://localhost:5000/address/${newAddress.data.id}`,
+    "get",
+    "",
+    LoginSession.data.token
   );
   expect(newAddress.data).not.toEqual(address.data);
   expect(newAddress.data).toEqual(addresscreated.data);
