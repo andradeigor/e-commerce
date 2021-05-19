@@ -4,11 +4,13 @@ const UserModel = require("../models/UserModel");
 module.exports = {
   async createPurchase(req, res) {
     const userId = res.locals.user;
-    const user = await UserModel.findByPk(userId);
-    const addressId = req.body.addressId;
+    const user = await UserModel.findByPk(userId, {
+      attributes: { exclude: ["password"] },
+    });
+    const { addressId, productId } = req.body;
     const address = await AddressModel.findByPk(addressId);
     if (address?.userId === Number(userId)) {
-      return { address: address, user: user };
+      return { address, user, productId };
     } else {
       return res.status(400).json({ error: " address id or user id invalid" });
     }
