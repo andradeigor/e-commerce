@@ -1,6 +1,6 @@
 const AddressModel = require("../models/AddressModel");
 const UserModel = require("../models/UserModel");
-
+const PurchaseModel = require("../models/PurchaseModel");
 module.exports = {
   async createPurchase(req, res) {
     const userId = res.locals.user;
@@ -10,7 +10,16 @@ module.exports = {
     const { addressId, productId } = req.body;
     const address = await AddressModel.findByPk(addressId);
     if (address?.userId === Number(userId)) {
-      return { address, user, productId };
+      productId.map(async (product) => {
+        await PurchaseModel.create({
+          userId: userId,
+          zipcode: address.zipcode,
+          street: address.street,
+          number: address.number,
+          productId: product,
+        });
+      });
+      return await PurchaseModel.findAll();
     } else {
       return res.status(400).json({ error: " address id or user id invalid" });
     }

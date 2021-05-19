@@ -25,12 +25,12 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
-      createdAt: {
-        type: Sequelize.DATE,
-        allowNull: false,
-      },
       productId: {
         type: Sequelize.INTEGER,
+        allowNull: false,
+      },
+      createdAt: {
+        type: Sequelize.DATE,
         allowNull: false,
       },
       updatedAt: {
