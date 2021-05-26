@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon server/server.js",
+    "queue": "nodemon server/queue.js",
     "test": "jest --env node --detectOpenHandles"
   },
   "keywords": [],
